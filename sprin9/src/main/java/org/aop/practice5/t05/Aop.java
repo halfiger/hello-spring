@@ -11,4 +11,9 @@ public class Aop {
         public void logFromPac() {
         System.out.println("[LOG] from [PAC]");
     }
+
+    @After("!execution(* org.aop.practice5.t05.pac..*(..))")
+    public void logExceptPac() {
+        System.out.println("[LOG] except [PAC]");
+    }
 }
