@@ -4,7 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ReportService    {
-    public void report () {
+    public void report () throws InterruptedException {
         System.out.println("Generate report");
+        Thread.sleep(500);
     }
 }

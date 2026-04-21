@@ -5,8 +5,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
-        ReportService report = context.getBean(ReportService.class);
+
+        try (context) {
+            ReportService report = context.getBean(ReportService.class);
             report.report();
-            context.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
