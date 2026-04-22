@@ -1,10 +1,7 @@
 package org.aop.practice7.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -50,9 +47,33 @@ public class Aop1 {
     public void returnValueIntAdvice () {
         System.out.println("[LOG] returned int value");
     }
-       */
+
     @After("!execution(* org.aop.practice7.entity.p1.*.*())")
     public void exceptFolderAdvice () {
+        System.out.println("[LOG] not from p1 folder advice");
+    }
+       */
+
+    //All methods in package
+    @Pointcut("execution(* org.aop.practice7.entity..*(..))")
+    public void allMethods() {
+        System.out.println("all method's pointcut");
+    }
+
+    //Only p1 package
+    @Pointcut("execution(* org.aop.practice7.entity.p1..*.*(..))")
+    public void p1Package() {
+        System.out.println("only p1 method's pointcut");
+    }
+
+    //ExceptP1 package
+    @Pointcut("allMethods() && !p1Package()")
+    public void exceptP1() {
+        System.out.println("except p1 pointcut");
+    }
+
+    @After("exceptP1()")
+    public void ExceptFolderAdvice2 () {
         System.out.println("[LOG] not from p1 folder advice");
     }
 }
