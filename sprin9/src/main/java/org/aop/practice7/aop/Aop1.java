@@ -29,4 +29,9 @@ public class Aop1 {
         System.out.println("[End] at " + LocalDateTime.now());
         return o;
     }
+
+    @After("execution(* org.aop.practice7.entity.UserService.*Registr*(String)) && args(username)")
+    public void argsAdvice(String username) {
+        System.out.println("[LOG] Registering user: " + username);
+    }
 }
