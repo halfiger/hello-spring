@@ -87,8 +87,16 @@ public class Aop1 {
         System.out.println("[Log] number of users " + result.size());
     }
 
+
     @Pointcut("execution(* org.aop.practice7.entity..*())")
     public void allEntityMethods() {
         System.out.println("Pointcut all methods");
     }
+
+    @Around("allEntityMethods()")
+    public Object gettingResultValue(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        List <String> list = (List<String>)proceedingJoinPoint.proceed();
+        return list.stream().map(String::toUpperCase).toList();
+    }
+
 }

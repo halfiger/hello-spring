@@ -10,7 +10,7 @@ public class Main8 {
 
         try (context) {
             UserService userService = context.getBean(UserService.class);
-            userService.getUsers();
+            System.out.println(userService.getUsers());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
