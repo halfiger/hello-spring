@@ -4,6 +4,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -105,5 +106,17 @@ public class Aop1 {
     @AfterThrowing (pointcut = "allEntityMethods()", throwing = "ex")
     public void getExceptionMessage(IllegalStateException ex) {
         System.out.println("[LOG] exception message " + ex.getMessage());
+    }
+
+    @Around ("allEntityMethods()")
+    public Object getTimeOfSlowMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        String methodName = proceedingJoinPoint.getSignature().getName();
+        System.out.println("[LOG] started method name = " + methodName);
+        LocalDateTime time1 = LocalDateTime.now();
+        Object o = proceedingJoinPoint.proceed();
+        LocalDateTime time2 = LocalDateTime.now();
+        Long time = Duration.between(time1, time2).toMillis();
+        System.out.println("[LOG] ended method name = " + methodName + " with time = " + time);
+        return o;
     }
 }

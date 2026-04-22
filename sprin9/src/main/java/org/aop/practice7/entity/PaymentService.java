@@ -11,6 +11,10 @@ public class PaymentService {
     public void failPayment() {
         System.out.println("fail payment method from PaymentService class");
         throw new IllegalStateException("payment fail -> message from exception");
+    }
 
+    public void slowMethod () throws InterruptedException {
+        System.out.println("message from slowMethod in PaymentService class");
+        Thread.sleep(500);
     }
 }
