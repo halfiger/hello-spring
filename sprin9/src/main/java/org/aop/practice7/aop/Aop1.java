@@ -39,4 +39,14 @@ public class Aop1 {
     public void packageAdvice () {
         System.out.println("Advice worked only in p1 folder");
     }
+
+    @After("execution(String *(..))" )
+    public void returnValueStringeAdvice () {
+        System.out.println("[LOG] returned String value");
+    }
+
+    @After("execution(int *(..))" )
+    public void returnValueIntAdvice () {
+        System.out.println("[LOG] returned int value");
+    }
 }

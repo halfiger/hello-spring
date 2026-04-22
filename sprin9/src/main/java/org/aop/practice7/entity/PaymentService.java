@@ -4,7 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PaymentService {
-    public void processPayment() {
+    public int processPayment() {
         System.out.println("payment method from PaymentService class");
+        return 1000;
     }
 }
