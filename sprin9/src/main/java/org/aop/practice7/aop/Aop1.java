@@ -5,10 +5,12 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Aspect
 @Component
 public class Aop1 {
+
     /*
     @Before("execution(* org.aop.practice7.entity.OrderService.*Order*(..))")
     public void beforeAdvice () {
@@ -52,7 +54,7 @@ public class Aop1 {
     public void exceptFolderAdvice () {
         System.out.println("[LOG] not from p1 folder advice");
     }
-       */
+
 
     //All methods in package
     @Pointcut("execution(* org.aop.practice7.entity..*(..))")
@@ -75,5 +77,18 @@ public class Aop1 {
     @After("exceptP1()")
     public void ExceptFolderAdvice2 () {
         System.out.println("[LOG] not from p1 folder advice");
+    }
+     */
+
+    @AfterReturning (pointcut = "allEntityMethods()",
+            returning = "result")
+    public void returningAdvice (List<String> result) {
+        System.out.println("Users = " + result);
+        System.out.println("[Log] number of users " + result.size());
+    }
+
+    @Pointcut("execution(* org.aop.practice7.entity..*())")
+    public void allEntityMethods() {
+        System.out.println("Pointcut all methods");
     }
 }
