@@ -3,13 +3,13 @@ package org.aop.practice7;
 import org.aop.practice7.entity.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class Main1 {
+public class Main3 {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(Config.class);
-        OrderService orderService = context.getBean(OrderService.class);
+        ReportService reportService = context.getBean(ReportService.class);
         try (context) {
-            orderService.processOrder();
+            reportService.generateReport();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

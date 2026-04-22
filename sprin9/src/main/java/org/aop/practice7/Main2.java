@@ -1,6 +1,6 @@
 package org.aop.practice7;
 
-import org.aop.practice7.entity.PaymentService;
+import org.aop.practice7.entity.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main2 {
