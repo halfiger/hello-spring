@@ -88,24 +88,10 @@ public class Aop1 {
         System.out.println("[Log] number of users " + result.size());
     }
 
-
-
-
     @Around("allEntityMethods()")
     public Object gettingResultValue(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         List <String> list = (List<String>)proceedingJoinPoint.proceed();
         return list.stream().map(String::toUpperCase).toList();
-    }
-     */
-
-    @Pointcut("execution(* org.aop.practice7.entity..*())")
-    public void allEntityMethods() {
-        System.out.println("Pointcut all methods");
-    }
-
-    @AfterThrowing (pointcut = "allEntityMethods()", throwing = "ex")
-    public void getExceptionMessage(IllegalStateException ex) {
-        System.out.println("[LOG] exception message " + ex.getMessage());
     }
 
     @Around ("allEntityMethods()")
@@ -118,5 +104,17 @@ public class Aop1 {
         Long time = Duration.between(time1, time2).toMillis();
         System.out.println("[LOG] ended method name = " + methodName + " with time = " + time);
         return o;
+    }
+
+    @Pointcut("execution(* org.aop.practice7.entity..*())")
+    public void allEntityMethods() {
+        System.out.println("Pointcut all methods");
+    }
+     */
+
+    @Around ("execution(* delete*(..))")
+    public Object catchDangerousMethod (ProceedingJoinPoint proceedingJoinPoint) {
+        System.out.println("[LOG] Dangereous method cathed at " + LocalDateTime.now() );
+        return null;
     }
 }

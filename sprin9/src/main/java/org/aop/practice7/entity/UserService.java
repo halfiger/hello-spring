@@ -14,4 +14,9 @@ public class UserService {
         System.out.println("getting of users in getUsers method");
         return List.of("dada", "anna");
     }
+
+    public String deleteAllUsers () {
+        System.out.println("try to remove all users from db");
+        return "all data removed";
+    }
 }
