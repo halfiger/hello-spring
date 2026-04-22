@@ -78,7 +78,7 @@ public class Aop1 {
     public void ExceptFolderAdvice2 () {
         System.out.println("[LOG] not from p1 folder advice");
     }
-     */
+
 
     @AfterReturning (pointcut = "allEntityMethods()",
             returning = "result")
@@ -88,15 +88,22 @@ public class Aop1 {
     }
 
 
-    @Pointcut("execution(* org.aop.practice7.entity..*())")
-    public void allEntityMethods() {
-        System.out.println("Pointcut all methods");
-    }
+
 
     @Around("allEntityMethods()")
     public Object gettingResultValue(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         List <String> list = (List<String>)proceedingJoinPoint.proceed();
         return list.stream().map(String::toUpperCase).toList();
     }
+     */
 
+    @Pointcut("execution(* org.aop.practice7.entity..*())")
+    public void allEntityMethods() {
+        System.out.println("Pointcut all methods");
+    }
+
+    @AfterThrowing (pointcut = "allEntityMethods()", throwing = "ex")
+    public void getExceptionMessage(IllegalStateException ex) {
+        System.out.println("[LOG] exception message " + ex.getMessage());
+    }
 }
