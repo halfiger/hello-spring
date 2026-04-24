@@ -27,4 +27,8 @@ public class UserService {
     public void updateUser (String username) {
         System.out.println("try to update username, new username = " + username);
     }
+
+    public void createUser (String name, int age) {
+        System.out.println("User created, name = " + name + " , age = " + age);
+    }
 }

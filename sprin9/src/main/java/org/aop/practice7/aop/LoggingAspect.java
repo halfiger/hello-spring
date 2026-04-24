@@ -15,5 +15,4 @@ public class LoggingAspect {
         System.out.println("[Login] logging");
         return proceedingJoinPoint.proceed();
     }
-
 }
