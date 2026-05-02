@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class Aop1 {
-    @Before("execution(* process*())")
-    public void beforeAspect () {
-        System.out.println("[SECURITY] Checking user before checkout");
-    }
+//    @Before("execution(* process*())")
+//    public void beforeAspect () {
+//        System.out.println("[SECURITY] Checking user before checkout");
+//    }
 }
