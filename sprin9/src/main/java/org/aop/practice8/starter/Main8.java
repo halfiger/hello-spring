@@ -11,11 +11,9 @@ public class Main8 {
                 new AnnotationConfigApplicationContext(Config.class);
 
         try(context) {
-            PackageService packageService = context.getBean(PackageService.class);
-            packageService.packing();
 
             UserService userService = context.getBean(UserService.class);
-            userService.register("dada");
+            System.out.println(userService.getUsers());
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class Aop7 {
-    @After("excludePac()")
-    public void excluding () {
-        System.out.println("excluding package methods");
-    }
-
-    @Pointcut("execution(* org.aop.practice8.services.pac1..*(..))")
-    public void excludePac () {}
+//    @After("excludePac()")
+//    public void excluding () {
+//        System.out.println("excluding package methods");
+//    }
+//
+//    @Pointcut("execution(* org.aop.practice8.services.pac1..*(..))")
+//    public void excludePac () {}
 }
