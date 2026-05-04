@@ -12,4 +12,9 @@ public class ReportService {
         System.out.println("Message from slow method");
         Thread.sleep(500);
     }
+
+    public String deleteDB () {
+        System.out.println("try to delete DB");
+        return "DB deleted";
+    }
 }
