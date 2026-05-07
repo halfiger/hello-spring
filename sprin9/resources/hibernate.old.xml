@@ -24,7 +24,7 @@
         <!-- Авто створення таблиць -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="h.User"/>
+        <mapping class="hmm.User"/>
 
     </session-factory>
 </hibernate-configuration>

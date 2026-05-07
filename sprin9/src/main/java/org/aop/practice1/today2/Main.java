@@ -1,13 +1,13 @@
-package org.aop.practice4.t04;
+package org.aop.practice1.today2;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(Config.class);
-        UserInterface user = context.getBean(UserInterface.class);
-        user.register("Yata");
+                new AnnotationConfigApplicationContext(MyConfig.class);
+        PaymentService payment = context.getBean("paymentService", PaymentService.class);
+        payment.processPayment();
         context.close();
     }
 }

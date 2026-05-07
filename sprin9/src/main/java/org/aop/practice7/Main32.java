@@ -1,6 +1,5 @@
 package org.aop.practice7;
 
-import h.User;
 import org.aop.practice7.entity.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
