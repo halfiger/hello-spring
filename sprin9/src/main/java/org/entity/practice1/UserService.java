@@ -13,11 +13,16 @@ public class UserService {
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();
-            session.close();
 
     }
 
-    public void findById () {
+    public User findById (int id) {
+
+        Session session = factory.getCurrentSession();
+            session.beginTransaction();
+            User user = session.get(User.class, id);
+            session.getTransaction().commit();
+            return user;
     }
 
     public void findAll () {
