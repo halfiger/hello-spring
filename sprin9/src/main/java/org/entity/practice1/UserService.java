@@ -16,7 +16,7 @@ public class UserService {
 
     }
 
-    public User findById (int id) {
+    public User findById (Long id) {
 
         Session session = factory.getCurrentSession();
             session.beginTransaction();
