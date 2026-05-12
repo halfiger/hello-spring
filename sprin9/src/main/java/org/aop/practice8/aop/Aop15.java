@@ -10,9 +10,9 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class Aop15 {
-    @Before("execution(* * (..))")
-    public void loggingArguments (JoinPoint jp) {
-        Object[] array = jp.getArgs();
-        System.out.println(" in method " + jp.getSignature().getName() + " we have next args " + Arrays.toString(array));
-    }
+//    @Before("execution(* * (..))")
+//    public void loggingArguments (JoinPoint jp) {
+//        Object[] array = jp.getArgs();
+//        System.out.println(" in method " + jp.getSignature().getName() + " we have next args " + Arrays.toString(array));
+//    }
 }

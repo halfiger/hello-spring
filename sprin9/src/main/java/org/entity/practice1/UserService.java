@@ -36,7 +36,7 @@ public class UserService {
         return list;
     }
 
-    public List <User> findUsersOlderThan (int age) {
+    public List<User> findUsersOlderThan(int age) {
         Session session = factory.getCurrentSession();
         session.beginTransaction();
         List<User> list = session.createQuery("from User u where u.age > :age").setParameter("age", age).getResultList();
@@ -44,11 +44,18 @@ public class UserService {
         return list;
     }
 
-
-
-    public void delete() {
-    }
-
-    public void pagination() {
+    public List<User> pagination(int page, int size) {
+        Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        List<User> list = session
+                .createQuery(
+                        "FROM User u ORDER BY u.id",
+                        User.class
+                )
+                .setFirstResult(page * size)
+                .setMaxResults(size)
+                .getResultList();
+        session.getTransaction().commit();
+        return list;
     }
 }
